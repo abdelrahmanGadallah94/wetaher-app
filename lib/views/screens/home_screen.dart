@@ -20,7 +20,8 @@ class HomePage extends StatelessWidget {
           IconButton(
               onPressed: () {
                 Navigator.pushNamed(context, AppRoutes.searchPage);
-                Provider.of<WeatherProvider>(context,listen: false).weatherData = null;
+                Provider.of<WeatherProvider>(context, listen: false)
+                    .weatherData = null;
               },
               icon: const Icon(
                 Icons.search,
@@ -28,10 +29,9 @@ class HomePage extends StatelessWidget {
               ))
         ],
       ),
-      body: Provider.of<WeatherProvider>(context).weatherData != null ?
-          const WeatherDataView()
+      body: Provider.of<WeatherProvider>(context).weatherData != null
+          ? const WeatherDataView()
           : const WarningData(),
     );
   }
 }
-

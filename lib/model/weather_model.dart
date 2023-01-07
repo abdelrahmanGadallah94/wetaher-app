@@ -16,7 +16,7 @@ class WeatherModel {
       required this.minTemp,
       required this.weatherState});
 
-  factory WeatherModel.fromJson(dynamic json){
+  factory WeatherModel.fromJson(dynamic json) {
     dynamic temp = json["forecast"]["forecastday"][0]["day"];
     return WeatherModel(
         date: DateTime.parse(json["location"]["localtime"]),
@@ -24,23 +24,22 @@ class WeatherModel {
         avgTemp: temp["avgtemp_c"],
         maxTemp: temp["maxtemp_c"],
         minTemp: temp["mintemp_c"],
-        weatherState: temp["condition"]["text"]
-    );
+        weatherState: temp["condition"]["text"]);
   }
 
-  MaterialColor changeColor(){
-    if(weatherState == "Partly cloudy" || weatherState == "Cloudy"){
+  MaterialColor changeColor() {
+    if (weatherState == "Partly cloudy" || weatherState == "Cloudy") {
       return Colors.deepPurple;
-    }else if(weatherState == "Patchy rain possible" ||weatherState == "Light rain shower"){
+    } else if (weatherState == "Patchy rain possible" ||
+        weatherState == "Light rain shower") {
       return Colors.cyan;
-    }else if(weatherState == "Clear"){
+    } else if (weatherState == "Clear") {
       return Colors.yellow;
-    }else if(weatherState == "Light rain shower"){
+    } else if (weatherState == "Light rain shower") {
       return Colors.orange;
-    }else if(weatherState == "Moderate rain"){
+    } else if (weatherState == "Moderate rain") {
       return Colors.green;
-    }
-    else{
+    } else {
       return Colors.blue;
     }
   }
