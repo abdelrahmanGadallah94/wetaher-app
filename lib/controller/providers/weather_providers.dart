@@ -8,6 +8,7 @@ import '../../model/weather_model.dart';
 
 class WeatherProvider extends ChangeNotifier {
   WeatherModel? weatherData;
+  bool dataCheck = true;
   String? city;
   Future<WeatherModel?>getData({required String city}) async {
     try{
@@ -17,11 +18,12 @@ class WeatherProvider extends ChangeNotifier {
       if(response.statusCode == 200){
         Map<String,dynamic> body = jsonDecode(response.body);
         weatherData = WeatherModel.fromJson(body);
-        debugPrint("avgTemp: ${weatherData?.date ?? ''}");
         notifyListeners();
+        debugPrint("avgTemp: ${weatherData?.date ?? ''}");
         return weatherData;
       }
     }catch (e){
+      notifyListeners();
       debugPrint(e.toString());
     }
   }

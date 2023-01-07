@@ -20,6 +20,7 @@ class HomePage extends StatelessWidget {
           IconButton(
               onPressed: () {
                 Navigator.pushNamed(context, AppRoutes.searchPage);
+                Provider.of<WeatherProvider>(context,listen: false).weatherData = null;
               },
               icon: const Icon(
                 Icons.search,
