@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
-import '../../views/screens/home_screen.dart';
 import '../../views/settings/app_strings.dart';
 import '../providers/weather_providers.dart';
 
@@ -14,7 +12,7 @@ Future<void> searchAndUpdateData(BuildContext context, String? city) async {
   if(provider.weatherData == null){
     // ignore: use_build_context_synchronously
     ScaffoldMessenger.of(context).showSnackBar(
-         SnackBar(
+         const SnackBar(
           dismissDirection: DismissDirection.up,
             duration: Duration(seconds: 2),
             content: Text(
@@ -24,10 +22,6 @@ Future<void> searchAndUpdateData(BuildContext context, String? city) async {
     );
   }else{
     // ignore: use_build_context_synchronously
-    Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(
-          builder: (context) => const HomePage(),
-        ));
+    Navigator.pop(context);
   }
 }

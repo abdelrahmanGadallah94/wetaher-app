@@ -12,7 +12,17 @@ class WeatherDataView extends StatelessWidget {
   Widget build(BuildContext context) {
     WeatherModel? data = Provider.of<WeatherProvider>(context).weatherData;
     return Container(
-      color: Colors.orange,
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          colors: [
+            data!.changeColor(),
+            data.changeColor()[100]!,
+            data.changeColor()[50]!,
+          ],
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+        )
+      ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -26,7 +36,7 @@ class WeatherDataView extends StatelessWidget {
           ),
           const Spacer(),
           Text(
-            "Updated at: ${data?.date.hour ?? ''}:${data?.date.minute ?? ''}",
+            "Updated at: ${data.date.hour}:${data.date.minute}",
             style: const TextStyle(fontSize: 18),
           ),
           const Spacer(),
@@ -34,7 +44,7 @@ class WeatherDataView extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               Image.network(
-                "https:${data!.icon}",
+                "https:${data.icon}",
               ),
                Text(
                 "Avg temp: ${data.avgTemp.toInt()} C",

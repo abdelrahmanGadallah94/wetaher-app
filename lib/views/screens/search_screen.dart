@@ -29,6 +29,7 @@ class SearchPage extends StatelessWidget {
                 suffixIcon: IconButton(
                     onPressed: () async {
                       await searchAndUpdateData(context, city);
+
                     },
                     icon: const Icon(
                       Icons.search,

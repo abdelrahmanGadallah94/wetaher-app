@@ -1,6 +1,5 @@
 import 'dart:convert';
-
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:weather_app/views/settings/app_strings.dart';
 
@@ -26,5 +25,8 @@ class WeatherProvider extends ChangeNotifier {
       notifyListeners();
       debugPrint(e.toString());
     }
+    return null;
   }
+
+
 }
