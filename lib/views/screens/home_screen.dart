@@ -25,7 +25,7 @@ class HomePage extends StatelessWidget {
               ))
         ],
       ),
-      body: check == true?
+      body: check == false?
           Container(
               color: Colors.orange,
               child: Column(

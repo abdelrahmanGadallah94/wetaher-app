@@ -32,6 +32,7 @@ dependencies:
   http:
   bloc:
   flutter_bloc:
+  provider:
   flutter:
     sdk: flutter
 
