@@ -16,6 +16,7 @@ Future<void> searchAndUpdateData(BuildContext context, String? city) async {
     ScaffoldMessenger.of(context).showSnackBar(
          SnackBar(
           dismissDirection: DismissDirection.up,
+            duration: Duration(seconds: 2),
             content: Text(
             AppStrings.error,
           textAlign: TextAlign.center,
