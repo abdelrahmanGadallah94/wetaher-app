@@ -27,8 +27,10 @@ class SearchPage extends StatelessWidget {
             decoration: InputDecoration(
               contentPadding: const EdgeInsets.only(top: 33,bottom: 33,left: 10,right: 33),
               suffixIcon: IconButton(
-                  onPressed: (){
-                    Provider.of<WeatherProvider>(context,listen: false).getData(city: city!);
+                  onPressed: ()async {
+                    WeatherProvider provider = Provider.of<WeatherProvider>(context,listen: false);
+                    await provider.getData(city: city!);
+                    provider.city = city;
                     Navigator.pop(context);
                   },
                   icon: const Icon(Icons.search,size: 30,)),

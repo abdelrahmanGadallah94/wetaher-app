@@ -15,9 +15,9 @@ class WeatherModel {
       required this.weatherState});
 
   factory WeatherModel.fromJson(dynamic json){
-    dynamic temp = json["forecast"]["forecastday"]["day"];
+    dynamic temp = json["forecast"]["forecastday"][0]["day"];
     return WeatherModel(
-        date: json["location"]["localtime"],
+        date: DateTime.parse(json["location"]["localtime"]),
         icon: json["current"]["condition"]["icon"],
         avgTemp: temp["avgtemp_c"],
         maxTemp: temp["maxtemp_c"],

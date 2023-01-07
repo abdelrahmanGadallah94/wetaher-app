@@ -17,11 +17,12 @@ class WeatherProvider extends ChangeNotifier {
       if(response.statusCode == 200){
         Map<String,dynamic> body = jsonDecode(response.body);
         weatherData = WeatherModel.fromJson(body);
+        debugPrint("avgTemp: ${weatherData?.date ?? ''}");
         notifyListeners();
+        return weatherData;
       }
     }catch (e){
       debugPrint(e.toString());
     }
-    return weatherData;
   }
 }
