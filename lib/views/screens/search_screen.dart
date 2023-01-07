@@ -15,19 +15,19 @@ class SearchPage extends StatelessWidget {
           ),
         ),
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 15),
+        padding: const EdgeInsets.symmetric(horizontal: 15),
         child: Center(
           child: TextField(
-            maxLines: 3,
             decoration: InputDecoration(
+              contentPadding: EdgeInsets.only(top: 33,bottom: 33,left: 10,right: 33),
               suffixIcon: IconButton(
                   onPressed: (){
                     Navigator.pop(context);
                   },
                   icon: const Icon(Icons.search,size: 30,)),
               hintText: AppStrings.search,
-              border: OutlineInputBorder(),
-              focusedBorder: OutlineInputBorder(
+              border: const OutlineInputBorder(),
+              focusedBorder: const OutlineInputBorder(
                 borderSide: BorderSide(color: AppColors.kMainColor)
               )
             ),
