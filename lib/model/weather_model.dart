@@ -19,7 +19,7 @@ class WeatherModel {
   factory WeatherModel.fromJson(dynamic json) {
     dynamic temp = json["forecast"]["forecastday"][0]["day"];
     return WeatherModel(
-        date: DateTime.parse(json["location"]["localtime"]),
+        date: DateTime.parse(json["current"]["last_updated"]),
         icon: temp["condition"]["icon"],
         avgTemp: temp["avgtemp_c"],
         maxTemp: temp["maxtemp_c"],
@@ -33,7 +33,7 @@ class WeatherModel {
     } else if (weatherState == "Patchy rain possible" ||
         weatherState == "Light rain shower") {
       return Colors.cyan;
-    } else if (weatherState == "Clear") {
+    } else if (weatherState == "Clear" || weatherState == "Sunny") {
       return Colors.yellow;
     } else if (weatherState == "Light rain shower") {
       return Colors.orange;

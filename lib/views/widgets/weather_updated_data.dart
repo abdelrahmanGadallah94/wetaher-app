@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
-import '../../controller/providers/weather_providers.dart';
+import 'package:weather_app/controller/cubit/weather_cubit.dart';
 import '../../model/weather_model.dart';
 
 class WeatherUpdatedData extends StatelessWidget {
@@ -19,7 +18,7 @@ class WeatherUpdatedData extends StatelessWidget {
       children: [
         const Spacer(flex: 4),
         Text(
-          "${Provider.of<WeatherProvider>(context).city}",
+          "${Provider.of<WeatherCubit>(context).city}",
           style: const TextStyle(
             fontSize: 35,
             fontWeight: FontWeight.bold,

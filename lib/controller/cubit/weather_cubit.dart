@@ -11,7 +11,7 @@ part 'weather_state.dart';
 class WeatherCubit extends Cubit<WeatherState> {
   WeatherCubit() : super(WeatherInitial());
 
-  WeatherModel ? weatherData;
+  WeatherModel ? cubitData;
   String ?city;
 
   Future<WeatherModel?> getData({required String city}) async {
@@ -22,14 +22,19 @@ class WeatherCubit extends Cubit<WeatherState> {
 
       if (response.statusCode == 200) {
         Map<String, dynamic> body = jsonDecode(response.body);
-        weatherData = WeatherModel.fromJson(body);
+        cubitData = WeatherModel.fromJson(body);
         emit(WeatherSuccess());
-        return weatherData;
+      }else{
+        emit(WeatherFailure(
+            errorMessage: "Wrong Data"
+        ));
       }
     } catch (e) {
       debugPrint(e.toString());
-      emit(WeatherFailure());
+      emit(WeatherFailure(
+        errorMessage: e.toString()
+      ));
     }
-    return null;
+    return cubitData;
   }
 }
